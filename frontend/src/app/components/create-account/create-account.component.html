@@ -1,0 +1,212 @@
+
+<section class="vh-100 bg-image"
+style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+<div class="mask d-flex align-items-center h-100 gradient-custom-1">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-8">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+
+              <div class="form-row">
+
+                  <div class="form-group col-md-6">
+                    <label for="username">Username</label>
+                    <input name="username" formControlName="username" type="text" class="form-control" id="username" placeholder="Username">
+                  </div>
+            
+                  <div class="form-group col-md-6">
+                    <label for="password">Password</label>
+                    <input name="password" formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+                  </div>
+            
+                </div>
+            
+                 <!-- Checks if input is valid. If not then tells user it's invalid and upon hover shows details -->
+                <div class="form-row">
+            
+                  <div class="form-group col-md-6">
+                    <div *ngIf="username != null && username.invalid && (username.dirty || username.touched)">
+                      <div [hidden]="!username.errors?.['required']" title="Username cannot be longer than 20 characters, and no special characters." for="username" class="red-text">
+                          *Username is required.
+                      </div>
+                      <div [hidden]="!username.errors?.['pattern']" title="Username cannot be longer than 20 characters, and no special characters." class="red-text">
+                          *Username is invalid. &#8505;
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div *ngIf="password != null && password.invalid && (password.dirty || password.touched)" class="form-group col-md-6">
+                    <div [hidden]="!password.errors?.['required']" title="Password must be between 5-14 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
+                        *Password is required.
+                    </div>
+                    <div [hidden]="!password.errors?.['pattern']" title="Password must be between 5-14 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
+                        *Password is invalid. &#8505;
+                    </div>
+                  </div>
+            
+                </div>
+            
+                <div class="form-row" >
+            
+                      <div class="form-group col-md-3" formGroupName="name">
+                        <label for="firstName">First name</label>
+                        <input name="firstName" formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="First name">
+                      </div>
+              
+                      <div class="form-group col-md-3" formGroupName="name" >
+                          <label for="lastName">Last name</label>
+                          <input name="lastName" formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Last name">
+                      </div>
+            
+            
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail">Email</label>
+                        <input name="email" formControlName="email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                    
+                </div>
+            
+                <div class="form-row">
+            
+                  <div class="form-group col-md-3">
+                    <div *ngIf="name.controls['firstName'] != null && name.controls['firstName'].invalid && (name.controls['firstName'].dirty || name.controls['firstName'].touched)">
+                      <div [hidden]="!name.controls['firstName'].errors?.['required']" for="firstName" class="red-text">
+                        *First name is required.
+                      </div>
+                      <div [hidden]="!name.controls['firstName'].errors?.['pattern']" for="firstName" class="red-text">
+                        *First Name is invalid.
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="form-group col-md-3">
+                    <div *ngIf="name.controls['lastName'] != null && name.controls['lastName'].invalid && (name.controls['lastName'].dirty || name.controls['lastName'].touched)">
+                      <div [hidden]="!name.controls['lastName'].errors?.['required']" for="lastName" class="red-text">
+                        *Last name is required.
+                      </div>
+                      <div [hidden]="!name.controls['lastName'].errors?.['pattern']" for="lastName" class="red-text">
+                        *Last Name is invalid.
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="form-group col-md-6">
+                    <div *ngIf="email != null && email.invalid && (email.dirty || email.touched)">
+                      <div [hidden]="!email.errors?.['required']" for="email" class="red-text">
+                          *Email is required.
+                      </div>
+                      <div [hidden]="!email.errors?.['email']" class="red-text" title="Please enter a valid email address">
+                          *Email is invalid. &#8505;
+                      </div>
+                    </div>
+                  </div>
+            
+                </div>
+            
+                <div class="form-row" formGroupName="address">
+            
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress">Address</label>
+                    <input name="address1" formControlName="address1" type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                  </div>
+            
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress">Address 2</label>
+                    <input name="address2" formControlName="address2" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  </div>
+            
+                </div>
+                
+                <div class="form-row" formGroupName="address">
+            
+                  <div class="form-group col-md-6">
+                    <label for="inputCity">City</label>
+                    <input name="city" formControlName="city" type="text" class="form-control" id="inputCity" placeholder="City">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <label for="inputState">State</label>
+                    <select name="state" formControlName="state" id="inputState" class="form-control">
+                        <option selected>Choose...</option>
+                        <option value="AL">AL</option>
+                        <option value="AK">AK</option>
+                        <option value="AR">AR</option>
+                        <option value="AZ">AZ</option>
+                        <option value="CA">CA</option>
+                        <option value="CO">CO</option>
+                        <option value="CT">CT</option>
+                        <option value="DC">DC</option>
+                        <option value="DE">DE</option>
+                        <option value="FL">FL</option>
+                        <option value="GA">GA</option>
+                        <option value="HI">HI</option>
+                        <option value="IA">IA</option>
+                        <option value="ID">ID</option>
+                        <option value="IL">IL</option>
+                        <option value="IN">IN</option>
+                        <option value="KS">KS</option>
+                        <option value="KY">KY</option>
+                        <option value="LA">LA</option>
+                        <option value="MA">MA</option>
+                        <option value="MD">MD</option>
+                        <option value="ME">ME</option>
+                        <option value="MI">MI</option>
+                        <option value="MN">MN</option>
+                        <option value="MO">MO</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="NC">NC</option>
+                        <option value="NE">NE</option>
+                        <option value="NH">NH</option>
+                        <option value="NJ">NJ</option>
+                        <option value="NM">NM</option>
+                        <option value="NV">NV</option>
+                        <option value="NY">NY</option>
+                        <option value="ND">ND</option>
+                        <option value="OH">OH</option>
+                        <option value="OK">OK</option>
+                        <option value="OR">OR</option>
+                        <option value="PA">PA</option>
+                        <option value="RI">RI</option>
+                        <option value="SC">SC</option>
+                        <option value="SD">SD</option>
+                        <option value="TN">TN</option>
+                        <option value="TX">TX</option>
+                        <option value="UT">UT</option>
+                        <option value="VT">VT</option>
+                        <option value="VA">VA</option>
+                        <option value="WA">WA</option>
+                        <option value="WI">WI</option>
+                        <option value="WV">WV</option>
+                        <option value="WY">WY</option>
+                    </select>
+                  </div>
+            
+                  <div class="form-group col-md-2">
+                    <label for="inputZip">Zip</label>
+                    <input name="zip" formControlName="zip" type="text" class="form-control" id="inputZip" placeholder="Zip Code">
+                  </div>
+            
+                </div>
+
+
+              <div class="d-flex justify-content-center">
+                <button type="button"
+                  class="btn btn-warning btn-block btn-lg text-body" type="submit" [disabled]="!signUpForm.valid" >Register</button>
+              </div>
+
+              <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="http://localhost:4200/login"
+                  class="fw-bold text-body"><u>Login here</u></a></p>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

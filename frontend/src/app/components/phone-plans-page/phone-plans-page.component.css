@@ -1,0 +1,49 @@
+.card-pricing.popular {
+    z-index: 1;
+    border: 1px solid #ff0062;
+}
+
+.btn{
+    border-radius: 1px;
+    font-weight:300;
+}
+.hvr:hover{
+
+    color: #fff;
+    background-color: #ff0062;
+    border: 1px solid #ff0062 !important;
+} 
+
+.bg-custom {
+    background-color: #ff0062;
+}
+
+.text-custom {
+    color: #ff0062;;
+}
+
+.btn-custom {
+    background-color: #ff0062;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: #d42065;
+}
+
+.bg-custom-2 {
+    background-color: #a200ff;
+}
+
+.text-custom-2 {
+    color: #a200ff;
+}
+
+.btn-custom-2 {
+    background-color: #a200ff;
+    color: white;
+}
+
+.btn-custom-2:hover {
+    background-color: #a200ff;
+}

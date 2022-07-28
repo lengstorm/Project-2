@@ -1,0 +1,41 @@
+<div class="container mb-5 mt-5">
+    <h2 style="text-align: center; margin-bottom: 10px;">Available Plans</h2>
+    <div class="pricing card-deck flex-column flex-md-row mb-3">
+
+        <div class="card card-pricing text-center px-3 mb-4" *ngFor="let plan of listOfPlans; let i = index;" [hidden]="hideOwnedPlans(plan.phonePlanType)">
+            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-custom text-white shadow-sm">{{plan.planName}}</span>
+            <div class="bg-transparent card-header pt-4 border-0">
+                <h1 class="h1 font-weight-normal text-custom text-center mb-0">$<span class="price"> {{plan.price}} </span><span class="h6 text-muted ml-2">/ per month</span></h1>
+            </div>
+            <div class="card-body pt-2" >
+                <ul class="list mb-3" style="list-style: none; padding-left: 0;">
+                    <b><li>Up to {{plan.deviceLimit}} devices</li></b>
+                    <li>Monthly updates</li>
+                    <li>Free cancelation</li>
+                </ul>
+                <button type="button" class="btn btn-custom mb-3 hvr" (click)="addPlan(plan.phonePlanType)">Order now</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5 mt-5">
+    <h2 style="text-align: center; margin-bottom: 10px;">Currently Owned Plans</h2>
+    <div class="pricing card-deck flex-column flex-md-row mb-3">
+
+        <div class="card card-pricing text-center px-3 mb-4" *ngFor="let plan of phonePlans; let i = index;">
+            <span class="h6 w-60 mx-auto px-4 py-1 rounded-bottom bg-custom-2 text-white shadow-sm">{{plan.planName}}</span>
+            <div class="bg-transparent card-header pt-4 border-0">
+                <h1 class="h1 font-weight-normal text-custom-2 text-center mb-0">$<span class="price"> {{plan.price}} </span><span class="h6 text-muted ml-2">/ per month</span></h1>
+            </div>
+            <div class="card-body pt-2" >
+                <ul class="list mb-3" style="list-style: none; padding-left: 0;">
+                    <b><li>Up to {{plan.deviceLimit}} devices</li></b>
+                    <li>Monthly updates</li>
+                    <li>Free cancelation</li>
+                </ul>
+                <button type="button" class="btn btn-custom-2 mb-3 hvr" (click)="deletePlan(plan.phonePlanType)">Remove Plan</button>
+            </div>
+        </div>
+    </div>
+</div>

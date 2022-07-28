@@ -1,0 +1,166 @@
+
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col col-lg-6 mb-4 mb-lg-0">
+          <div class="card mb-3" style="border-radius: .5rem;">
+            <div class="row g-0">
+              <div class="col-md-4 gradient-custom text-center text-white"
+                style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                  alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+                <h5> {{account.username}} </h5>
+                <p> {{ account.name }} </p>
+                <i class="far fa-edit mb-5" (click)="toggleEdit()" style="cursor: pointer;"></i>
+                <div>
+                    <button class="btn btn-danger" (click)="deleteAccount()" >Delete Account</button>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card-body p-4">
+                  <h6>Information</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6>Email</h6>
+                      <p class="text-muted">{{account.email}}</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6>Address</h6>
+                      <p class="text-muted"> {{account.address}} </p>
+                    </div>
+                  </div>
+                  <h6>Devices & Plans</h6>
+                  <hr class="mt-0 mb-4">
+                  <div class="row pt-1">
+                    <div class="col-6 mb-3">
+                      <h6>Devices </h6>
+                      <p class="text-muted"> {{account.users.length}} / {{deviceLimit}} Devices Regisered</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                      <h6>Current Plans</h6>
+                      <p class="text-muted" *ngFor="let plan of phonePlans; let i = index"> {{phonePlans[i].planName}} </p>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-start">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container h-100" [hidden]="!isBeingEdited">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-9 col-lg-7 col-xl-8">
+        <div class="card" style="border-radius: 15px;">
+          <div class="card-body p-5">
+                <form [formGroup]="editForm" >
+
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                        <label for="username">Username</label>
+                        <input name="username" formControlName="username" type="text" class="form-control" id="username" placeholder="Username">
+                        </div>
+                
+                        <div class="form-group col-md-6">
+                        <label for="password">Password</label>
+                        <input name="password" formControlName="password" type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                
+                    </div>
+                
+                    <!-- Checks if input is valid. If not then tells user it's invalid and upon hover shows details -->
+                    <div class="form-row">
+                
+                        <div class="form-group col-md-6">
+                        <div *ngIf="username != null && username.invalid && (username.dirty || username.touched)">
+                            <div [hidden]="!username.errors?.['required']" title="Username cannot be longer than 20 characters, and no special characters." for="username" class="red-text">
+                                *Username is required.
+                            </div>
+                            <div [hidden]="!username.errors?.['pattern']" title="Username cannot be longer than 20 characters, and no special characters." class="red-text">
+                                *Username is invalid. &#8505;
+                            </div>
+                        </div>
+                        </div>
+                
+                        <div *ngIf="password != null && password.invalid && (password.dirty || password.touched)" class="form-group col-md-6">
+                        <div [hidden]="!password.errors?.['required']" title="Password must be between 5-14 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
+                            *Password is required.
+                        </div>
+                        <div [hidden]="!password.errors?.['pattern']" title="Password must be between 5-14 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
+                            *Password is invalid. &#8505;
+                        </div>
+                        </div>
+                
+                    </div>
+                
+                    <div class="form-row" >
+                
+                            <div class="form-group col-md-3" formGroupName="name">
+                            <label for="firstName">First name</label>
+                            <input name="firstName" formControlName="firstName" type="text" class="form-control" id="firstName" placeholder="First name">
+                            </div>
+                    
+                            <div class="form-group col-md-3" formGroupName="name" >
+                                <label for="lastName">Last name</label>
+                                <input name="lastName" formControlName="lastName" type="text" class="form-control" id="lastName" placeholder="Last name">
+                            </div>
+                
+                
+                        <div class="form-group col-md-6">
+                            <label for="inputEmail">Email</label>
+                            <input name="email" formControlName="email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+                        </div>
+                        
+                    </div>
+                
+                    <div class="form-row">
+                
+                        <div class="form-group col-md-3">
+                        <div *ngIf="name.controls['firstName'] != null && name.controls['firstName'].invalid && (name.controls['firstName'].dirty || name.controls['firstName'].touched)">
+                            <div [hidden]="!name.controls['firstName'].errors?.['required']" for="firstName" class="red-text">
+                            *First name is required.
+                            </div>
+                            <div [hidden]="!name.controls['firstName'].errors?.['pattern']" for="firstName" class="red-text">
+                            *First Name is invalid.
+                            </div>
+                        </div>
+                        </div>
+                
+                        <div class="form-group col-md-3">
+                        <div *ngIf="name.controls['lastName'] != null && name.controls['lastName'].invalid && (name.controls['lastName'].dirty || name.controls['lastName'].touched)">
+                            <div [hidden]="!name.controls['lastName'].errors?.['required']" for="lastName" class="red-text">
+                            *Last name is required.
+                            </div>
+                            <div [hidden]="!name.controls['lastName'].errors?.['pattern']" for="lastName" class="red-text">
+                            *Last Name is invalid.
+                            </div>
+                        </div>
+                        </div>
+                
+                        <div class="form-group col-md-6">
+                        <div *ngIf="email != null && email.invalid && (email.dirty || email.touched)">
+                            <div [hidden]="!email.errors?.['required']" for="email" class="red-text">
+                                *Email is required.
+                            </div>
+                            <div [hidden]="!email.errors?.['email']" class="red-text" title="Please enter a valid email address">
+                                *Email is invalid. &#8505;
+                            </div>
+                        </div>
+                        </div>
+                
+                    </div>
+
+                    <div class="d-flex" style="justify-content: space-evenly;">
+                    <button class="btn btn-success " type="submit" [disabled]="!editForm.valid" (click)="sendEditRequest()" >Edit</button>
+                    <button class="btn btn-danger " type="button" (click)="cancel()" >Cancel</button>
+                    </div>
+                </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
