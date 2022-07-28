@@ -56,14 +56,14 @@ export class LoginComponent implements OnInit {
       if (this.service.loginAttempts < 3) {
         this.service.loginAttempts++;
       }
-      //after 3 consecutive attempts, disable logging in for 2 minutes.
+      //after 3 consecutive attempts, disable logging in for 5 seconds.
       //FIX-ME, get it to persist upon refresh.
       else {
         this.disabled = true;
         sessionStorage.clear();
         setTimeout(() => {
           this.disabled = false;
-        }, 1000 * 60 * 2);
+        }, 1000 * 5);
       }
     }
 

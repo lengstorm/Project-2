@@ -70,8 +70,9 @@ export class AccountInfoComponent implements OnInit {
       this.service.currentAccount.users = this.users;
       this.service.currentAccount.phonePlans = this.phonePlans;
     }
-    //we're not logged in
+    //we're not logged in or someone tampered with session storage
     else { 
+      sessionStorage.clear();
       this.router.navigate(["/login"]);
     }
   }

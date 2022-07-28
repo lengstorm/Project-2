@@ -55,6 +55,7 @@ export class PhonePlansPageComponent implements OnInit {
 
     }
     else {
+      sessionStorage.clear();
       this.router.navigate(["/login"]);
     }
     //gets list of all available phone plans to display to client

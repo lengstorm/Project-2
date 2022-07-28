@@ -2,6 +2,7 @@ package com.skillstorm.controller;
 
 import com.skillstorm.model.Account;
 import com.skillstorm.service.AccountService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import javax.validation.Valid;
 @CrossOrigin
 @RequestMapping(path = "/project2/v1")
 @RestController
+@Tag(description = "Basic CRUD operations for the account primary user. All require auth except creating an account", name = "account-controller")
 public class AccountController {
 
     private final AccountService accountService;

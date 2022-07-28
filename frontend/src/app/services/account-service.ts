@@ -16,8 +16,8 @@ export class AccountService {
   loginAttempts: number = 0;
   isLoggedIn: boolean = true;
   /*
-  isLockedOut: put this in session storage. have the value be the time remaining and every second have it go down by one. whe it's 0, you can sign in again
-  eventually put something so that if sessino key or value change, log them out and make them login
+  isLockedOut: put this in session storage. have the value be the time remaining and every second have it go down by one. when it's 0, you can sign in again
+  eventually put something so that if session key or value change, log them out and make them login
   */
 
   constructor(private http: HttpClient) {  }

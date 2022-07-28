@@ -49,7 +49,9 @@ export class BillingPageComponent implements OnInit {
           });
 
         }
-        else {
+        //we're not logged in or someone tampered with session storage
+        else { 
+          sessionStorage.clear();
           this.router.navigate(["/login"]);
         }
     

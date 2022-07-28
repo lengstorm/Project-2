@@ -1,6 +1,7 @@
 package com.skillstorm.controller;
 
 import com.skillstorm.model.User;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping(path = "/project2/v1")
 @RestController
+@Tag(description = "Basic CRUD operations for users in the account. All require account to be authenticated", name = "user-controller")
 public class UserController {
 
     private final UserService userService;

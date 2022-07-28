@@ -29,6 +29,7 @@ export class DeletePageComponent implements OnInit {
     }
     //we're not logged in
     else { 
+      sessionStorage.clear();
       this.router.navigate(["/login"]);
     }
 

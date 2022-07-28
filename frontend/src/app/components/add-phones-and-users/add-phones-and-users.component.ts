@@ -80,7 +80,9 @@ export class AddPhonesAndUsersComponent implements OnInit {
       this.service.currentAccount.phonePlans = this.phonePlans;
 
     }
-    else {
+    //we're not logged in or someone tampered with session storage
+    else { 
+      sessionStorage.clear();
       this.router.navigate(["/login"]);
     }
 
