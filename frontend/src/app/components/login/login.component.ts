@@ -12,6 +12,7 @@ import { AccountService } from '../../services/account-service';
 export class LoginComponent implements OnInit {
 
   disabled: boolean = false;
+  invalidCredentialsText = "";
 
   //regex validators for username and password
   signInForm = this.formB.group({
@@ -55,6 +56,7 @@ export class LoginComponent implements OnInit {
       //if unsuccessful, let them try again but only 2 more attempts
       if (this.service.loginAttempts < 3) {
         this.service.loginAttempts++;
+        this.invalidCredentialsText = "Incorrect credentials. Try again."
       }
       //after 3 consecutive attempts, disable logging in for 5 seconds.
       //FIX-ME, get it to persist upon refresh.

@@ -27,6 +27,8 @@
                       <input type="password" id="password" class="form-control" name="password" formControlName="password"/>
                       <label class="form-label" for="password">Password</label>
                     </div>
+
+                    <div class="form-outline mb-4" style="color: red;"> {{invalidCredentialsText}} </div>
   
                     <div class="text-center pt-1 mb-5 pb-1">
                       <button class="btn btn-primary btn-block fa-lg gradient-custom mb-3" type="submit" [disabled]="disabled">
