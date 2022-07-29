@@ -40,10 +40,10 @@ style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/
                   </div>
             
                   <div *ngIf="password != null && password.invalid && (password.dirty || password.touched)" class="form-group col-md-6">
-                    <div [hidden]="!password.errors?.['required']" title="Password must be between 5-14 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
+                    <div [hidden]="!password.errors?.['required']" title="Password must be between 3-40 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
                         *Password is required.
                     </div>
-                    <div [hidden]="!password.errors?.['pattern']" title="Password must be between 5-14 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
+                    <div [hidden]="!password.errors?.['pattern']" title="Password must be between 3-40 characters. Must include one lowercase, one uppercase, and one number." for="password" class="red-text">
                         *Password is invalid. &#8505;
                     </div>
                   </div>

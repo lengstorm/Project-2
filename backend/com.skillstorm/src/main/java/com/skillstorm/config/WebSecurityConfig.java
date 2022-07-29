@@ -39,7 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
-                .antMatchers("/project2/v1/home").permitAll()
                 .antMatchers( HttpMethod.POST, "/project2/v1/my-account").permitAll()
                 .antMatchers("/project2/v1/my-**").authenticated()
                 .and()
