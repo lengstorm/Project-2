@@ -9,4 +9,10 @@
     background: linear-gradient(to right, rgba(170, 14, 61, 1), rgb(212, 170, 18))
   }
 
+  .gradient-form {
+    background-color: #eee;
+    height: 100vh;
+    margin-top: -5em;
+  }
+
   

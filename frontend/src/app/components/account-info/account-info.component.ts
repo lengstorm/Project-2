@@ -18,6 +18,7 @@ export class AccountInfoComponent implements OnInit {
   account: any = this.service.currentAccount;
   deviceLimit = 0;
   isBeingEdited = false;
+  amountDue: number = 0;
 
   editForm = this.formB.group({
     username: ['', Validators.compose([Validators.required, Validators.pattern("^[a-zA-Z0-9]{1,40}$")])],
@@ -45,6 +46,7 @@ export class AccountInfoComponent implements OnInit {
 
         for (let i = 0; i < res.activePhonePlans.length; i++) {
           this.phonePlans.push(new ActivePhonePlans(res.activePhonePlans[i].id, res.activePhonePlans[i].phonePlanType))
+          this.amountDue += this.phonePlans[i].price;
         }
         for (let i = 0; i < this.phonePlans.length; i++) {
           if (this.deviceLimit < this.phonePlans[i].deviceLimit) this.deviceLimit = this.phonePlans[i].deviceLimit;
@@ -63,6 +65,7 @@ export class AccountInfoComponent implements OnInit {
 
       for (let i = 0; i < this.service.currentAccount.phonePlans.length; i++) {
         this.phonePlans.push(new ActivePhonePlans(this.service.currentAccount.phonePlans[i].id, this.service.currentAccount.phonePlans[i].phonePlanType));
+        this.amountDue += this.phonePlans[i].price;
       }
       for (let i = 0; i < this.phonePlans.length; i++) {
         if (this.deviceLimit < this.phonePlans[i].deviceLimit) this.deviceLimit = this.phonePlans[i].deviceLimit;

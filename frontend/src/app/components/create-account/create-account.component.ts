@@ -32,7 +32,7 @@ export class CreateAccountComponent implements OnInit {
   ngOnInit(): void {
     if (sessionStorage.length > 0) {
       alert("Log out first to create a new account.");
-      this.router.navigate(["/customers"]);
+      this.router.navigate(["/my-account"]);
     }
   }
 

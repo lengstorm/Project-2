@@ -13,3 +13,19 @@
     }
 
     /* rgba(246, 211, 101, 1), rgba(253, 160, 133, 1)) */
+
+    .account-content {
+        background-color: #eee;
+        margin-top: -10%;
+    }
+
+    .edit-content {
+        background-color: #eee;
+        margin-top: -12%;
+    }
+
+    .content {
+        background-color: #eee;
+        padding-bottom: 25vh;
+        overflow-y: hidden;
+    }
